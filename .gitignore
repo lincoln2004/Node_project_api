@@ -1,0 +1,5 @@
+node_modules/
+
+.env
+
+db_sqlite_t4.sqlite
