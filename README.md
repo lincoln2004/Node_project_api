@@ -1,9 +1,9 @@
 
-This project is a Api Application, and was wrote in Node.js (javascript)
+#This project is a Api Application, and was wrote in Node.js (javascript)
 
 ///
 
-The javascript libraries used were:
+###The javascript libraries used were:
 
 
 Express (to wrote the server);
@@ -20,7 +20,7 @@ ioredis (to session storage, for be more fast and simple, which relational datab
 
 ///
 
-Also the Node library used were:
+###Also the Node library used were:
 
 crypto (to cryptography of session datas).
 
