@@ -18,7 +18,7 @@ let opt = {
     resave: false,
     cookie: {
         httpOnly: true,
-        maxAge: process.env.SS_TIME_MILI
+        maxAge: Number(process.env.SS_TIME_MILI)
     },
     saveUninitialized: false
 }
