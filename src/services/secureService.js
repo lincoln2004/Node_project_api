@@ -15,6 +15,7 @@ class secureClass {
 
     async authfinder(data) {
 
+
         await this.#syncModel()
 
         if (data) {
@@ -23,6 +24,7 @@ class secureClass {
             if (rst) {
 
                 if (rst.username === data.username) {
+
                     return true
                 }
             }

@@ -17,6 +17,7 @@ login.post('/login', async (req,res) =>{
             res.redirect('/')
         }
         else{
+            console.log('ops')
             res.redirect('/login?unauthorized=true')
         }
     }

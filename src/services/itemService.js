@@ -19,7 +19,7 @@ class itemService {
 
         return await this.#model.findAll({
             attributes: [['name', 'typeItem'],
-            ['amount', 'stock']]
+            ['amount', 'stock'], 'id']
         })
     }
 
@@ -73,9 +73,11 @@ class itemService {
 
         await this.#syncModel()
 
+        console.log(typeof Number(args.identifier))
+
         if(args && args.identifier && typeof args.identifier === 'number'){
 
-            await this.#model.destroy({ where: { id: identifier} })
+            await this.#model.destroy({ where: { id: args.identifier} })
             
         }
     }

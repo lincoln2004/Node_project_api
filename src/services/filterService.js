@@ -5,8 +5,19 @@ class filterService {
 
     static async authFilter(req, next) {
 
-        let data = cryptService.decipher(req.session.tk_auth_sec)
+        let session = req.session.tk_auth_sec || null
+
+        if(!session){
+            req.credError = { type: 'authError' }
+
+            return next()
+        }
+
+        let data = Object.assign(session, { iv: Buffer.from(session.iv.data), tag: Buffer.from(session.tag.data)})
+        data = JSON.parse(cryptService.decipher(req.session.tk_auth_sec)) || null
+
         const body =  data ? { identifier: data.identifier , username: data.username} : false
+
 
         if (await new secureClass().authfinder(body)) {
             next()
@@ -40,8 +51,6 @@ class loginFilter {
 
             const tmp = await new secureClass().login(creds.username, creds.pwssd)
 
-            console.log(tmp)
-
             if (tmp && typeof tmp === 'object') {
                 return tmp
             }
@@ -54,7 +63,7 @@ class loginFilter {
 
         if (this.#body) {
 
-            req.session.tk_auth_sec = cryptService.cipher(await this.#body)
+            req.session.tk_auth_sec = cryptService.cipher(JSON.stringify(await this.#body))
             req.session.save()
         }
 

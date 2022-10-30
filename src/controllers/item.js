@@ -25,13 +25,13 @@ item.post('/item/methods/put/:id', async (req,res) => {
 
     if(req.params){
 
-        const { identifier} = req.params
+        const { id } = req.params
 
         if(req.body){
 
             const { stock } = req.body
 
-            await new itemService().put({ findBy: 1, change: stock, identifier} )
+            await new itemService().put({ findBy: 1, change: stock, identifier: id} )
         }
     }
     res.end()
@@ -41,10 +41,10 @@ item.post('/item/methods/delete/:id', async (req, res) => {
 
     if(req.params){
 
-        const { identifier} = req.params
+        const {id} = req.params
 
-        if(identifier){
-            await new itemService().delete({ identifier })
+        if(id){
+            await new itemService().delete({ identifier: Number(id)})
         }
     }
     res.end()
