@@ -27,3 +27,9 @@ crypto (to cryptography of session datas).
 ///
 
 The api simulate a item manage system, with authentication to security of data protected. Moreover, don't has a html page, it's only url requests.
+
+### Video of aplication:
+
+
+https://user-images.githubusercontent.com/68092674/199066201-44ee81f0-07d1-4c68-85a5-fc6342d415d5.mp4
+
